@@ -1,0 +1,17 @@
+p {
+  color: red;
+}
+
+.myul {
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 0;
+}
+  .myul li {
+    margin-left: 5px;
+    display: inline;
+  }
+
+  .myul img {
+    border: 1px solid black;
+  }

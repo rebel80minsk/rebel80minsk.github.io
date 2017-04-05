@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
+<head>
+<title>MyInstCockpit</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="js/myinstacockpit.js"></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <label for="nickname">Nickname:</label>
+  <input type="text" id="nickname" name="nickname" value="myuniverse8">
+  <br>
+  <label for="testmode">TestMode:</label>
+  <input type="checkbox" id="testmode" name="testmode" checked>
+  <!-- <label for="tags">Tags:</label>
+  <input type="text" id="tags" name="tags" value="">
+  <br> -->
+  <br>
+
+  <button type="button" onclick="photosBtnClick()">Photos</button>
+  <button type="button" onclick="commentsBtnClick()">Comments</button>
 </body>
 </html>
