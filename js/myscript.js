@@ -4,6 +4,12 @@ var myComments = '';
 var myTestMode = '';
 var myTitle = '';
 
+$('.darken').hover(function() {
+    $(this).find('img').fadeTo(500, 0.5);
+}, function() {
+    $(this).find('img').fadeTo(500, 1);
+});
+
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
@@ -74,7 +80,7 @@ processMediaObjPhotos = function(mediaObj) {
     for (i = 0; i < itemsLength; i++) {
         //console.log(mediaObj.items[i]);
 
-        var photoTxt = '<a target="_blank" href="' + mediaObj.items[i].link + '"><img src="' + mediaObj.items[i].images.thumbnail.url + '"></img></a>';
+        var photoTxt = '<a class="darken" target="_blank" href="' + mediaObj.items[i].link +'"><img src="' + mediaObj.items[i].images.thumbnail.url + '" data-likes-count="' + mediaObj.items[i].likes.count + '" data-comments-count="' + mediaObj.items[i].comments.count + '"></img></a>';
 
         var node = document.createElement("li"); // Create a <li> node
         node.innerHTML = photoTxt;
