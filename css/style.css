@@ -16,7 +16,7 @@ p {
     border: 1px solid black;
   }
 
-a.darken {
+/*a.darken {
     display: inline-block;
     background: black;
     padding: 0;
@@ -31,6 +31,10 @@ a.darken {
            -o-transition: all 0.5s linear;
               transition: all 0.5s linear;
   }
+
+  a.darken:hover img {
+      opacity: 0.4;
+  }*/
 
   a.darken:hover img {
       opacity: 0.4;

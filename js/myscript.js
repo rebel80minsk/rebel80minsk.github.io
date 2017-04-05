@@ -4,11 +4,11 @@ var myComments = '';
 var myTestMode = '';
 var myTitle = '';
 
-$('.darken').hover(function() {
-    $(this).find('img').fadeTo(500, 0.5);
-}, function() {
-    $(this).find('img').fadeTo(500, 1);
-});
+// $('.darken').hover(function() {
+//     $(this).find('img').fadeTo(500, 0.5);
+// }, function() {
+//     $(this).find('img').fadeTo(500, 1);
+// });
 
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
