@@ -7,14 +7,14 @@ var myWinName = '';
 function photosBtnClick() {
   getCurrentValues();
   winName = 'myphotos_' + myNickname;
-  myUrl = 'photos.html?nickname=' + myNickname + '&testmode=' + myTestMode;
+  myUrl = 'newpage.html?nickname=' + myNickname + '&testmode=' + myTestMode;
   myWin = window.open(myUrl, winName);
 }
 
 function commentsBtnClick() {
   getCurrentValues();
   myWinName = 'mycomments_' + myNickname;
-  myUrl = 'comments.html?nickname=' + myNickname + '&comments=X' + '&testmode=' + myTestMode;
+  myUrl = 'newpage.html?nickname=' + myNickname + '&comments=X' + '&testmode=' + myTestMode;
   myWin = window.open(myUrl, myWinName);
 }
 

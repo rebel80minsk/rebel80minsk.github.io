@@ -2,16 +2,16 @@ p {
   color: red;
 }
 
-.myul {
+.my-photos-ul {
     list-style: none; /* Remove list bullets */
     padding: 0;
     margin: 0;
 }
-  .myul li {
+  .my-photos-ul li {
     margin-left: 5px;
     display: inline;
   }
 
-  .myul img {
+  .my-photos-ul img {
     border: 1px solid black;
   }
