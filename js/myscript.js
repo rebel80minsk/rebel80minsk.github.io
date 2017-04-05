@@ -3,6 +3,7 @@ var myUrl = '';
 var myComments = '';
 var myTestMode = '';
 var myTitle = '';
+var myOwnComments = '';
 
 // $('.darken').hover(function() {
 //     $(this).find('img').fadeTo(500, 0.5);
@@ -21,6 +22,7 @@ window.onload = function() {
 
     myComments = getURLParameter('comments');
     myTestMode = getURLParameter('testmode');
+    myOwnComments = getURLParameter('owncomments');
 
     myTitle = myNickname + '(';
 
@@ -80,7 +82,7 @@ processMediaObjPhotos = function(mediaObj) {
     for (i = 0; i < itemsLength; i++) {
         //console.log(mediaObj.items[i]);
 
-        var photoTxt = '<a class="darken" target="_blank" href="' + mediaObj.items[i].link +'"><img src="' + mediaObj.items[i].images.thumbnail.url + '" data-likes-count="' + mediaObj.items[i].likes.count + '" data-comments-count="' + mediaObj.items[i].comments.count + '"></img></a>';
+        var photoTxt = '<a class="darken" target="_blank" href="' + mediaObj.items[i].link + '"><img src="' + mediaObj.items[i].images.thumbnail.url + '" data-likes-count="' + mediaObj.items[i].likes.count + '" data-comments-count="' + mediaObj.items[i].comments.count + '"></img></a>';
 
         var node = document.createElement("li"); // Create a <li> node
         node.innerHTML = photoTxt;
@@ -113,23 +115,28 @@ processMediaObjComments = function(mediaObj) {
         var commentsObj = mediaObj.items[i].comments;
         if (commentsObj.count > 0) {
             for (j = 0; j < commentsObj.data.length; j++) {
-                if (commentsObj.data[j].from.username != myNickname) {
-                    //    if ( commentsObj.data[j].from.username == mynickname ){
-                    // console.log(mediaObj.items[i]);
-
-                    var photoScr = mediaObj.items[i].images.standard_resolution.url;
-                    photoScr = photoScr.replace('s640x640', 's1080x1080');
-                    // console.log(commentsObj.data[j].created_time);
-                    var timeSec = commentsObj.data[j].created_time;
-                    var commentDate = new Date(+timeSec);
-                    // console.log(commentDate);
-                    var commentTxt = commentsObj.data[j].from.username + ': ' + commentsObj.data[j].text + ' (<a target="_blank" href="' + mediaObj.items[i].link + '">post</a>, <a target="_blank" href="' + photoScr + '">big photo</a>)';
-                    var node = document.createElement("li"); // Create a <li> node
-                    node.innerHTML = commentTxt;
-                    // var textnode = document.createTextNode(commentTxt);       // Create a text node
-                    // node.appendChild(textnode);                              // Append the text to <li>
-                    document.getElementById("mylist").appendChild(node); // Append <li> to <ul> with id="myList"
+                if (myOwnComments !== 'X') {
+                    if (commentsObj.data[j].from.username === myNickname) {
+                        continue;
+                    }
                 }
+
+                // console.log(mediaObj.items[i]);
+
+                var photoScr = mediaObj.items[i].images.standard_resolution.url;
+                photoScr = photoScr.replace('s640x640', 's1080x1080');
+                // console.log(commentsObj.data[j].created_time);
+                var timeSec = commentsObj.data[j].created_time;
+                var commentDate = new Date(+timeSec);
+                // console.log(commentDate);
+                //var commentTxt = '<a href="#">sdasdasd</a>';
+                var commentTxt = commentsObj.data[j].from.username + ': ' + commentsObj.data[j].text + ' (<a target="_blank" href="' + mediaObj.items[i].link + '">post</a>, <a target="_blank" href="' + photoScr + '">big photo</a>)';
+                var node = document.createElement("li"); // Create a <li> node
+                node.innerHTML = commentTxt;
+                // var textnode = document.createTextNode(commentTxt);       // Create a text node
+                // node.appendChild(textnode);                              // Append the text to <li>
+                document.getElementById("mylist").appendChild(node); // Append <li> to <ul> with id="myList"
+
             }
         }
         if (i === (itemsLength - 1)) {
