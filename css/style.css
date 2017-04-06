@@ -2,6 +2,11 @@ p {
   color: red;
 }
 
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
 .my-photos-ul {
     list-style: none; /* Remove list bullets */
     padding: 0;
@@ -15,6 +20,11 @@ p {
   .my-photos-ul img {
     border: 1px solid black;
   }
+
+div .photo {
+  display: inline;
+  padding: 3px;
+}
 
 /*a.darken {
     display: inline-block;
@@ -36,6 +46,14 @@ p {
       opacity: 0.4;
   }*/
 
-  a.darken:hover img {
-      opacity: 0.4;
-  }
+div.photos {
+  margin: 5px;
+}
+
+a.darken img {
+  border: 1px black solid;
+}
+
+a.darken:hover img {
+    opacity: 0.4;
+}

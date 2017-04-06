@@ -29,7 +29,7 @@ window.onload = function() {
     if (myComments === 'X') {
         myTitle = myTitle + 'comments)';
     } else {
-        document.getElementById("mylist").classList.add("my-photos-ul");
+  //      document.getElementById("mylist").classList.add("my-photos-ul");
         myTitle = myTitle + 'photos)';
     }
 
@@ -84,9 +84,15 @@ processMediaObjPhotos = function(mediaObj) {
 
         var photoTxt = '<a class="darken" target="_blank" href="' + mediaObj.items[i].link + '"><img src="' + mediaObj.items[i].images.thumbnail.url + '" data-likes-count="' + mediaObj.items[i].likes.count + '" data-comments-count="' + mediaObj.items[i].comments.count + '"></img></a>';
 
-        var node = document.createElement("li"); // Create a <li> node
+        // var node = document.createElement("li"); // Create a <li> node
+        var node = document.createElement("div");
         node.innerHTML = photoTxt;
-        document.getElementById("mylist").appendChild(node);
+        node.classList.add("photo");
+        // document.getElementById("mylist").appendChild(node);
+
+        var contentDiv = document.getElementById("content");
+        contentDiv.classList.add("photos");
+        contentDiv.appendChild(node);
 
         if (i === (itemsLength - 1)) {
             nextUrl = myUrl + '?max_id=' + mediaObj.items[i].id;
@@ -130,12 +136,19 @@ processMediaObjComments = function(mediaObj) {
                 var commentDate = new Date(+timeSec);
                 // console.log(commentDate);
                 //var commentTxt = '<a href="#">sdasdasd</a>';
-                var commentTxt = commentsObj.data[j].from.username + ': ' + commentsObj.data[j].text + ' (<a target="_blank" href="' + mediaObj.items[i].link + '">post</a>, <a target="_blank" href="' + photoScr + '">big photo</a>)';
-                var node = document.createElement("li"); // Create a <li> node
+                var commentTxt = '<a target="_blank" href="' + mediaObj.items[i].link + '"><button class="ui-btn ui-btn-inline ui-shadow ui-corner-all" type="button">' + commentsObj.data[j].from.username + ': ' + commentsObj.data[j].text + '</button></a> <a target="_blank" href="' + photoScr + '"><button class="ui-btn ui-btn-inline ui-shadow ui-corner-all" type="button">big photo</button></a>';
+                //var commentTxt = commentsObj.data[j].from.username + ': ' + commentsObj.data[j].text + ' (<a target="_blank" href="' + mediaObj.items[i].link + '"><button class="ui-btn ui-btn-inline ui-shadow ui-corner-all" type="button">post</button></a>, <a target="_blank" href="' + photoScr + '"><button class="ui-btn ui-btn-inline ui-shadow ui-corner-all" type="button">big photo</button></a>)';
+
+                // var node = document.createElement("li"); // Create a <li> node
+                var node = document.createElement("div");
+                node.classList.add("comment");
                 node.innerHTML = commentTxt;
                 // var textnode = document.createTextNode(commentTxt);       // Create a text node
                 // node.appendChild(textnode);                              // Append the text to <li>
-                document.getElementById("mylist").appendChild(node); // Append <li> to <ul> with id="myList"
+                // document.getElementById("mylist").appendChild(node); // Append <li> to <ul> with id="myList"
+                var contentDiv = document.getElementById("content");
+                contentDiv.classList.add("comments");
+                contentDiv.appendChild(node);
 
             }
         }
